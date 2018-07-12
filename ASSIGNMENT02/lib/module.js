@@ -1,28 +1,37 @@
 var movies_array = [
-    {title:"clerks",director:"frank herbert",releasedate:"1994"},
+    {title:"clerks",director:"kevin smith",releasedate:"1994"},
     {title:"bullitt",director:"peter yates",releasedate:"1968"},
     {title:"gran torino",director:"clint eastwood",releasedate:"2008"},
     {title:"logans run",director:"michael anderson",releasedate:"1976"},
-    {title:"clerks",director:"lawrence kasdan",releasedate:"1985"},
     {title:"silverado",director:"lawrence kasdan",releasedate:"1985"}
 ];
 
+// THIS prints out ALL contents of this database
 exports.getAll = () => {
     return movies_array;
 }
+// UNCOMMENT LINES BELOW TO TEST getAll functionality
+// console.log(this.getAll());
+// console.log();
+// console.log();
+// console.log();
 
-//console.log(this.getAll());
-console.log();
-console.log();
-console.log();
-console.log();
+
 
 
 exports.get = (title) => {
     return movies_array.find((item) => {
-    return item.type === title;
+    return item.title === title;
     });
 };
+// UNCOMMENT LINES BELOW TO TEST get SPECIFIC TITLE functionality
+// console.log(this.get("clerks"));
+// console.log();
+// console.log();
+// console.log();
+// console.log();
+
+
 
 
 exports.delete = (title) => {
@@ -34,8 +43,13 @@ exports.delete = (title) => {
     // if old & new array lengths differ, item was deleted
     return {deleted: oldSize !== movies_array.length, total: movies_array.length };
 }
-//console.log(this.delete("clerks"));
-//console.log(this.getAll());
+// UNCOMMENT LINES BELOW TO TEST delete functionality
+// console.log(this.delete("clerks"));  // delete title(s) with "clerks"
+// console.log(this.getAll());          // verifies DELETION
+// console.log();
+// console.log();
+// console.log();
+// console.log();
 
 
 
@@ -49,11 +63,12 @@ exports.add = (new_movies_array) => {
     // if old & new array lengths differ, item was added
     return {added: oldLength !== movies_array.length, total: movies_array.length };
 };
-
-//console.log(this.add({title:"clerks",director:"frank herbert",releasedate:"1994"}));
-//console.log(this.getAll());
-
-//console.log(movies_array);
+// UNCOMMENT LINES BELOW TO TEST add functionality
+// console.log(this.add({title:"clerks",director:"frank herbert",releasedate:"1994"}));
+// console.log(this.getAll());
+// console.log();
+// console.log();
+// console.log();
 
 
 
