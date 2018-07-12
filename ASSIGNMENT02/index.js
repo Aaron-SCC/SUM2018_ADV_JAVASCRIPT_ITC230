@@ -99,7 +99,26 @@ http.createServer(function(req,res){
 
 
       
-      
+    
+    // Brenden:  I cannot quite get the format 
+    // for passing in from URL query syntax format 
+    // formal array
+    // for example:
+    //. ~/add?title=clerks,director:kevin%20smith,releasedate:1994
+    //           will ADD 
+    // "clerks,director:kevin smith,releasedate:1994"
+    //           instead of DESIRED effect OF
+    // {"title":"clerks","director":"kevin smith","releasedate":"1994"}
+    // ANY HELP/consulting would be appreciated
+    // this puzzle had ME HOOKED>>>>>>>>>>>>>>>
+    //
+    //  Please check my lib/module.js 
+    //  with uncomments the console BLOCKS as director 
+    //  for delete and add  CODE paragraphs as proof 
+    //  of my due diligence...  AND .... my head-scratching....
+    //          UGH>>>>>>>>>>>>> ME GRIMLOCK TIRED NOW
+    //          ME, GRIMLOCK CODE GO TAKE NAP TIME NOW
+    //
     case '/add':
       res.writeHead(200, {'Content-Type': 'text/plain'});
 
