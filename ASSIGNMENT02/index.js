@@ -32,12 +32,12 @@ http.createServer(function(req,res){
          // in order to invoke delete SPECIFIC title
   let query = qs.parse(url[1]); // convert query string to object
   
-  let query2 = qs.parse(url[2]); // convert query string to object
-  let query3 = qs.parse(url[3]); // convert query string to object
+  // let query2 = qs.parse(url[2]); // convert query string to object
+  // let query3 = qs.parse(url[3]); // convert query string to object
   
-  console.log( JSON.stringify(query) + "\n");
-  console.log( JSON.stringify(query2)   + "\n");
-  console.log( JSON.stringify(query3)   + "\n");
+   console.log( JSON.stringify(query) + "\n");
+  // console.log( JSON.stringify(query2)   + "\n");
+  // console.log( JSON.stringify(query3)   + "\n");
 
 
          // just makes every thing lowercase for lazy USER typists
@@ -119,10 +119,15 @@ http.createServer(function(req,res){
     //          UGH>>>>>>>>>>>>> ME GRIMLOCK TIRED NOW
     //          ME, GRIMLOCK CODE GO TAKE NAP TIME NOW
     //
+    // GRIMLOCK thanks Brenden for consults
+    //  use   ~/add?title=clerks&director=kevin smith&releasedate=1994
+    //  ANDDDDD movies.add(query); // for entire OBJECT 
+    //             not just segment of object like movies.get(query.title)
+    //                                        like movies.delete(query.title)
     case '/add':
       res.writeHead(200, {'Content-Type': 'text/plain'});
 
-      movies.add(query.title); // this invocation will do the deletion
+      movies.add(query); // this invocation will do the deletion
            // lines below PROVE said above addition
       let found6   = movies.getAll();
       let results6 = (found6) ? JSON.stringify(found6) : "Not found";
