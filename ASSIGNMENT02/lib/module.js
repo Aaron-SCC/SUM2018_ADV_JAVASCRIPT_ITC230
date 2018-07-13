@@ -53,12 +53,12 @@ exports.delete = (title) => {
 
 
 
-exports.add = (new_movies_array) => {
+exports.add = (new_movies_object) => {
     const oldLength = movies_array.length;
     // use existing get() method to check if book already in our list
-    let found = this.get(new_movies_array.title);
+    let found = this.get(new_movies_object.title);
     if (!found) {
-        movies_array.push(new_movies_array);
+        movies_array.push(new_movies_object);
     }
     // if old & new array lengths differ, item was added
     return {added: oldLength !== movies_array.length, total: movies_array.length };
@@ -69,6 +69,7 @@ exports.add = (new_movies_array) => {
 // console.log();
 // console.log();
 // console.log();
+console.log(movies_array + "\n \n");
 
 
 
