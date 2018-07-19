@@ -71,5 +71,3 @@ exports.add = (new_movies_object) => {
 // console.log();
 console.log(movies_array + "\n \n");
 
-
-
