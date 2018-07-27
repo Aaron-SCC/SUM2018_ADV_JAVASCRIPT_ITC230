@@ -29,6 +29,21 @@ app.get('/', (req, res, next) => {
   });
 });
 
+app.get('/api/books', (req,res, next) => {
+//  var books = bookMethods.getAll(); // return all items in book array
+  bookMethods.getAll().then((items) => {
+    res.json(items); 
+  }).catch((err) =>{
+    return next(err);
+  });
+//   if (books) {
+//     // res.json sets appropriate status code and response header
+//     res.json(books);
+//   } else {
+//     return res.status(500).send('Error occurred: database error.');
+//   }
+});
+
 
 // FOR SHOWING DETAILS
 app.get('/details', (req,res,next) => {
@@ -60,6 +75,22 @@ app.get('/delete', (req,res, next) => { // FLAG A
         });  // FLAG C
     });  // FLAG B
 });  // FLAG A
+
+
+// FOR DELETING
+// app.get('/api/v1/delete/:title', (req,res, next) => { // FLAG A
+//     Book.remove({ title:req.query.title }, (err, result) => { // FLAG B
+//         if (err){
+//             res.json({'deleted zero '});
+//         }
+//         else {
+//             res.json({'deleted ONE '});
+//         }
+        
+//     });  // FLAG B
+// });  // FLAG A
+
+
 
 
 // send plain text response
