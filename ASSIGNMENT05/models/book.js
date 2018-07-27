@@ -25,4 +25,3 @@ var mySchema = mongoose.Schema({
 module.exports = mongoose.model('Book', mySchema);
 
 
-
