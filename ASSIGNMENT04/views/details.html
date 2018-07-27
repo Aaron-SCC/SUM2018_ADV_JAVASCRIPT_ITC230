@@ -2,10 +2,10 @@
     <body>
         <a href="/">Home</a>
 {{#if result}}
-    <h2>{{title}} details</h2>
+    <h2>{{title}} Movie details.</h2>
     <li>Title: {{result.title}}</li>
-    <li>Title: {{result.director}}</li>
-    <li>Title: {{result.releasedate}}</li>
+    <li>Director: {{result.director}}</li>
+    <li>Release Date: {{result.releasedate}}</li>
     <p>
     <a href="/delete?title={{result.title}}">Delete</a>
     </p>
