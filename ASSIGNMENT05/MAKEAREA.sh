@@ -1,0 +1,13 @@
+touch lib/book_module.js
+touch models/book.js
+touch views/delete.html
+touch views/details.html
+touch views/home.html
+touch index.js
+touch package-lock.json
+touch package.json
+touch README.md
+touch FILE_LIST.txt
+touch alias.sh
+touch env.sh
+touch mlab.json
