@@ -14,32 +14,3 @@ exports.getAll = () => {
   });
 };
 
-
-// // return a single record
-// Book.findOne({'title':'clerks'}, (err, item) => {
-//   if (err) return err;
-//   console.log(item);
-//   // other code here
-// }); 
-
-// return a single record
-// exports.findOne = () => {
-//   Book.findOne({'title':'clerks'}, (err, item) => {
-//     if (err) return err;
-//     console.log(item);
-//     // other code here
-//     return item;
-//   });
-// };
-
-
-
-
-
-
-// UNCOMMENT LINES BELOW TO TEST getAll functionality
-// console.log(this.getAll().then((items) => {
-//     console.log(items);
-// }));
-// console.log();
-// console.log();

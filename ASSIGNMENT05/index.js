@@ -13,7 +13,10 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public')); // allows direct navigation to static files
+app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({extended: true}));
+//app.use('/api',require('cors')());
+//app.use('/api',require('cors')()); // set Access-Control-Allow-Origin header for api route
 
 let handlebars =  require("express-handlebars");
 app.engine(".html", handlebars({extname: '.html'}));
@@ -29,19 +32,60 @@ app.get('/', (req, res, next) => {
   });
 });
 
+
+//  USE THIS FOR JSON FORMAT of LIST OUT ALL 
+//  DETAILS OF JSON
+// API showing ALL titles
 app.get('/api/books', (req,res, next) => {
-//  var books = bookMethods.getAll(); // return all items in book array
   bookMethods.getAll().then((items) => {
+    if (!items){
+      return res.status(500).send('Error occurred: database error.');
+    }
     res.json(items); 
   }).catch((err) =>{
-    return next(err);
+    return res.status(500).send('Error occurred: database error.');
   });
-//   if (books) {
-//     // res.json sets appropriate status code and response header
-//     res.json(books);
-//   } else {
-//     return res.status(500).send('Error occurred: database error.');
-//   }
+});
+
+
+// API showing one title only
+app.get('/api/books/:title', (req,res, next) => {
+  Book.findOne({ title:req.params.title }).then((item) => {
+    if (!item){
+      return res.status(500).send('Error occurred: database error.');
+    }
+    res.json(item); 
+  }).catch((err) =>{
+    return res.status(500).send('Error occurred: database error.');
+  });
+});
+
+
+// API deleting one title only
+app.get('/api/books/delete/:title', (req,res, next) => {
+  Book.remove({ title:req.params.title }).then((item) => {
+    if (!item){
+      return res.status(500).send('Error occurred: database error.');
+    }
+    res.json(item); 
+  }).catch((err) =>{
+    return res.status(500).send('Error occurred: database error.');
+  });
+});
+   
+
+// debugging with BW  08/02/2018 5:00 PM
+// API showing one title only add one title only 
+app.post('/api/books/add', (req,res, next) => {
+  Book.update({ 'title': req.body.title }, req.body, { upsert: true }, (err, result) => {
+    console.log(err);
+    if (err) {
+      res.json({'status':'error', 'message': err});
+    } else {
+      res.json({'status':'success'});
+    }
+        console.log(result);
+  });
 });
 
 
@@ -75,22 +119,6 @@ app.get('/delete', (req,res, next) => { // FLAG A
         });  // FLAG C
     });  // FLAG B
 });  // FLAG A
-
-
-// FOR DELETING
-// app.get('/api/v1/delete/:title', (req,res, next) => { // FLAG A
-//     Book.remove({ title:req.query.title }, (err, result) => { // FLAG B
-//         if (err){
-//             res.json({'deleted zero '});
-//         }
-//         else {
-//             res.json({'deleted ONE '});
-//         }
-        
-//     });  // FLAG B
-// });  // FLAG A
-
-
 
 
 // send plain text response
