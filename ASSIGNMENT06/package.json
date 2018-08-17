@@ -1,0 +1,31 @@
+{
+  "name": "itc230",
+  "version": "1.0.0",
+  "description": "web-server APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendenwest/itc230.git"
+  },
+  "keywords": [
+    "Aaron",
+    "Lewis",
+    "itc230",
+    "summer",
+    "2018",
+    "web-server",
+    "APP"
+  ],
+  "author": "Aaron Lewis",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.2.4"
+  }
+}
+
